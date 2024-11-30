@@ -4,24 +4,33 @@ pipeline {
             label 'AGENT-1'
         }
     }
-    environment {
+    environment { 
         packageVersion = ''
-        nexusURL = '3.85.55.89:8081' 
+        nexusURL = '172.31.47.117:8081'
     }
-  
-    options{
+    options {
         timeout(time: 1, unit: 'HOURS')
         disableConcurrentBuilds()
-        // ansiColor('xterm')
     }
-   
+    parameters {
+        // string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        // text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        // booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
+
+        // choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        // password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+    // build
     stages {
         stage('Get the version') {
             steps {
                 script {
                     def packageJson = readJSON file: 'package.json'
                     packageVersion = packageJson.version
-                    echo " application version: $packageVersion"
+                    echo "application version: $packageVersion"
                 }
             }
         }
@@ -29,7 +38,20 @@ pipeline {
             steps {
                 sh """
                     npm install
-                    
+                """
+            }
+        }
+        stage('Unit tests') {
+            steps {
+                sh """
+                    echo "unit tests will run here"
+                """
+            }
+        }
+        stage('Sonar Scan'){
+            steps{
+                sh """
+                    sonar-scanner
                 """
             }
         }
@@ -37,8 +59,8 @@ pipeline {
             steps {
                 sh """
                     ls -la
-                     zip -q -r catalogue.zip ./* -x ".git" -x "*.zip" 
-                     ls -ltr
+                    zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
+                    ls -ltr
                 """
             }
         }

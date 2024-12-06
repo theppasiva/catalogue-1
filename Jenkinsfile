@@ -23,7 +23,7 @@ pipeline {
 
         // password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
-    build
+    // build
     stages {
         stage('Get the version') {
             steps {

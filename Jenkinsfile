@@ -1,3 +1,5 @@
+#!groovy
+@Library('roboshop-shared-library') _
 pipeline {
     agent {
         node {

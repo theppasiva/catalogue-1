@@ -9,6 +9,6 @@ def configMap = [
 if( ! env.BRANCH_NAME.equalsIgnoreCase('main') ) { /* if we put ! it works as opposite */
     pipelineDecission.decidepipeline(configMap) /* here we creatinhg pipelineDecission.decidepipeline function and we provide input as configMap */
 }
-    else { /* it is main */
-        echo "This is production, deal with CR process"
-    }
+else { /* it is main */
+    echo "This is production, deal with CR process"
+}

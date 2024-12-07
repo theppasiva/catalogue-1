@@ -6,7 +6,7 @@ def configMap = [
     application: "nodejsVM",  /* we are creating list of variables */
     component: "catalogue"
 ]
-if( ! env.BRANCH_NAME.equalsIgnoreCase('main') ) { /* if we put ! it works as opposite */
+if( ! env.BRANCH_NAME.equalsIgnoreCase('main')) { /* if we put ! it works as opposite */
     pipelineDecission.decidepipeline(configMap) /* here we creatinhg pipelineDecission.decidepipeline function and we provide input as configMap */
 }
 else { /* it is main */

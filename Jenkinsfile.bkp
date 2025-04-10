@@ -36,20 +36,20 @@ pipeline {
                 }
             }
         }
-        // stage('Install dependencies') {
-        //     steps {
-        //         sh """
-        //             npm install
-        //         """
-        //     }
-        // }
-        // stage('Unit tests') {
-        //     steps {
-        //         sh """
-        //             echo "unit tests will run here"
-        //         """
-        //     }
-        // }
+        stage('Install dependencies') {
+            steps {
+                sh """
+                    npm install
+                """
+            }
+        }
+        stage('Unit tests') {
+            steps {
+                sh """
+                    echo "unit tests will run here"
+                """
+            }
+        }
         // stage('Sonar Scan'){
         //     steps{
         //         sh """
@@ -57,15 +57,15 @@ pipeline {
         //         """
         //     }
         // }
-        // stage('Build') {
-        //     steps {
-        //         sh """
-        //             ls -la
-        //             zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
-        //             ls -ltr
-        //         """
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh """
+                    ls -la
+                    // zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
+                    ls -ltr
+                """
+            }
+        }
         // stage('Publish Artifact') {
         //     steps {
         //          nexusArtifactUploader(
